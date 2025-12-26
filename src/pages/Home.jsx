@@ -67,7 +67,6 @@ const Home = () => {
 
         {/* Content */}
         <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          <div className="text-5xl mb-6">❤️</div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
             {t.title}
           </h1>
