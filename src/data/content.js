@@ -61,7 +61,7 @@ export const content = {
         image: "/thareed-stop.jpg",
       },
       azzouniRestaurant: {
-        title: "التطوع في مطعم عزوني",
+        title: "التطوع في مطعم عزوتي",
         description: "تطوع في المطعم غير الربحي لتقديم وجبات مجانية للمحتاجين",
         image: "/azzouni-restaurant.jpg",
       },
@@ -176,7 +176,7 @@ export const content = {
         image: "/thareed-stop.jpg",
       },
       azzouniRestaurant: {
-        title: "Volunteering at Azzouni Restaurant",
+        title: "Volunteering at Ezawty Restaurant",
         description: "Volunteering at the non-profit restaurant to provide free meals to those in need",
         image: "/azzouni-restaurant.jpg",
       },
