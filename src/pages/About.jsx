@@ -8,82 +8,115 @@ const About = () => {
   const t = content[language].about;
 
   const values = [
-    { icon: '💝', text: t.values.giving },
-    { icon: '🤝', text: t.values.teamwork },
-    { icon: '🌍', text: t.values.responsibility },
-    { icon: '🔍', text: t.values.transparency },
-    { icon: '✨', text: t.values.dedication },
+    { icon: '💝', text: t.values.giving, color: 'from-pink-500 to-rose-500' },
+    { icon: '🤝', text: t.values.teamwork, color: 'from-blue-500 to-indigo-500' },
+    { icon: '🌍', text: t.values.responsibility, color: 'from-green-500 to-emerald-500' },
+    { icon: '🔍', text: t.values.transparency, color: 'from-purple-500 to-violet-500' },
+    { icon: '✨', text: t.values.dedication, color: 'from-amber-500 to-yellow-500' },
   ];
 
   return (
-    <section className="section-padding bg-gray-50 pt-24">
-        <div className="container-custom">
-          <SectionTitle title={t.title} />
-          
-          <div className="max-w-5xl mx-auto">
-            {/* About Content with Image and Text Overlay */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 relative">
-              <div className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
-                {/* Background Image */}
-                <img
-                  src="/about-us.jpg"
-                  alt={language === 'ar' ? 'فريق شباب الخير' : 'Shabab Al-Khair Team'}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Fallback if image doesn't exist
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `
-                      <div class="w-full h-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center rounded-2xl">
-                        <div class="text-white text-center p-8">
-                          <div class="text-6xl mb-4">👥</div>
-                          <p class="text-xl font-bold">${language === 'ar' ? 'فريق شباب الخير' : 'Shabab Al-Khair Team'}</p>
-                        </div>
-                      </div>
-                    `;
-                  }}
-                />
-                
-                {/* Overlay Gradient - Darker at bottom for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
-                
-                {/* Text Content Overlay */}
-                <div className="absolute inset-0 flex items-end justify-center p-8 md:p-12 lg:p-16">
-                  <div className="max-w-4xl w-full text-white">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 lg:p-10 border border-white/20 shadow-2xl">
-                      <p className="text-lg md:text-xl lg:text-2xl leading-relaxed mb-6 font-medium drop-shadow-lg">
-                        {t.description}
-                      </p>
-                      <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium drop-shadow-lg">
-                        {t.description2}
-                      </p>
+    <section className="section-padding bg-gradient-to-b from-gray-50 via-white to-gray-50 pt-24 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary/5 blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-luxury-gold/5 blur-3xl animate-float-slow" />
+      </div>
+
+      <div className="container-custom relative z-10">
+        <SectionTitle title={t.title} />
+
+        <div className="max-w-6xl mx-auto">
+          {/* About Content - Image with Text Overlay but showing all people */}
+          <div className="relative mb-16 animate-fade-in-up">
+            <div className="relative rounded-3xl overflow-hidden shadow-luxury">
+
+              {/* Image - Full width, natural aspect ratio to show all people */}
+              <img
+                src="/about-us.jpg"
+                alt={language === 'ar' ? 'فريق شباب الخير' : 'Shabab Al-Khair Team'}
+                className="w-full h-auto block"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+
+              {/* Gradient Overlay - Only at bottom to not cover people */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/40 to-transparent" />
+
+              {/* Decorative corner accents */}
+              <div className="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-luxury-gold/40 rounded-tl-3xl" />
+              <div className="absolute top-0 right-0 w-24 h-24 border-t-4 border-r-4 border-luxury-gold/40 rounded-tr-3xl" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 border-b-4 border-l-4 border-luxury-gold/40 rounded-bl-3xl" />
+              <div className="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-luxury-gold/40 rounded-br-3xl" />
+
+              {/* Text Content Overlay - At bottom */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-12">
+                <div className="max-w-4xl mx-auto">
+                  {/* Glass card */}
+                  <div className="bg-primary-dark/70 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 shadow-2xl">
+                    {/* Decorative line */}
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-10 h-1 rounded-full bg-gradient-to-r from-luxury-gold to-accent" />
+                      <span className="text-luxury-gold text-xl">✦</span>
+                      <div className="flex-1 h-px bg-gradient-to-r from-luxury-gold/50 to-transparent" />
+                    </div>
+
+                    <p className="text-base md:text-lg lg:text-xl leading-relaxed mb-4 font-medium text-white drop-shadow-lg">
+                      {t.description}
+                    </p>
+                    <p className="text-base md:text-lg lg:text-xl leading-relaxed font-medium text-white/90 drop-shadow-lg">
+                      {t.description2}
+                    </p>
+
+                    {/* Decorative bottom line */}
+                    <div className="flex items-center gap-4 mt-4 justify-end">
+                      <div className="flex-1 h-px bg-gradient-to-l from-luxury-gold/50 to-transparent" />
+                      <span className="text-luxury-gold text-xl">✦</span>
+                      <div className="w-10 h-1 rounded-full bg-gradient-to-l from-luxury-gold to-accent" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Values Section */}
-            <div>
-              <h3 className="text-3xl font-bold text-black mb-8 text-center">
+          {/* Values Section */}
+          <div className="relative">
+            <div className="text-center mb-12 animate-fade-in-up">
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary" />
+                <span className="text-3xl animate-bounce-slow">💎</span>
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary" />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent">
                 {t.values.title}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {values.map((value, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="text-4xl mb-3">{value.icon}</div>
-                    <p className="text-lg font-semibold text-black">
-                      {value.text}
-                    </p>
+            </div>
+
+            {/* Values Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              {values.map((value, index) => (
+                <div
+                  key={index}
+                  className="value-card animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="value-card-icon relative inline-block">
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${value.color} blur-xl opacity-30 scale-150`} />
+                    <span className="relative">{value.icon}</span>
                   </div>
-                ))}
-              </div>
+
+                  <p className="text-lg font-semibold text-gray-800">
+                    {value.text}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
   );
 };
 
