@@ -93,7 +93,7 @@ const Gallery = () => {
               {language === 'ar' ? 'تابع المزيد من صورنا' : 'See more of our photos'}
             </p>
             <a
-              href="https://www.instagram.com/shabab_alkhair06/"
+              href="https://www.instagram.com/youth.the.g00d?igsh=MXJocm5ka2ZldGJqaA=="
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-3"
