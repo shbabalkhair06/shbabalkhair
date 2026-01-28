@@ -15,7 +15,6 @@ const VolunteerOpportunity = () => {
     const [submitted, setSubmitted] = useState(false);
     const [alreadyRegistered, setAlreadyRegistered] = useState(false);
 
-    const MAX_VOLUNTEERS = 16;
     const STORAGE_KEY = 'elderly-home-volunteers-2026-02-05';
 
     const t = {
@@ -34,10 +33,7 @@ const VolunteerOpportunity = () => {
             cta1: '💫 وقتك صدقة',
             cta2: '💫 مشاركتك حياة',
             finalCall: 'كن معنا متطوعًا 🤝',
-            spotsLeft: 'متبقي',
-            volunteer: 'متطوع',
             registerNow: 'سجل الآن',
-            registrationClosed: 'اكتمل العدد',
             form: {
                 title: 'سجل كمتطوع',
                 fullName: 'الاسم الكامل',
@@ -65,10 +61,7 @@ Because a visit makes a difference ✨`,
             cta1: '💫 Your time matters',
             cta2: '💫 Your presence is life',
             finalCall: 'Join us as a volunteer 🤝',
-            spotsLeft: 'Spots left',
-            volunteer: 'volunteer',
             registerNow: 'Register Now',
-            registrationClosed: 'Registration Closed',
             form: {
                 title: 'Register as Volunteer',
                 fullName: 'Full Name',
@@ -91,8 +84,6 @@ Because a visit makes a difference ✨`,
             setRegistrations(JSON.parse(stored));
         }
     }, []);
-
-    const spotsRemaining = MAX_VOLUNTEERS - registrations.length;
 
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -208,24 +199,8 @@ Because a visit makes a difference ✨`,
                                 {/* Animated shine effect */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
-                                {/* Top Badges Container - Side by Side */}
-                                <div className="absolute top-3 left-3 right-3 md:top-6 md:left-6 md:right-6 flex justify-between items-start gap-2 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                                    {/* Spots Counter Badge */}
-                                    <div className={`relative px-3 py-1.5 md:px-4 md:py-2 rounded-full font-bold text-white shadow-lg backdrop-blur-md text-sm md:text-base ${spotsRemaining > 0
-                                        ? 'bg-gradient-to-r from-emerald-500/90 to-green-600/90'
-                                        : 'bg-gradient-to-r from-red-500/90 to-rose-600/90'
-                                        }`}>
-                                        {spotsRemaining > 0 && (
-                                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-400 to-green-500 animate-pulse opacity-40" />
-                                        )}
-                                        <span className="relative flex items-center gap-1">
-                                            <span className="font-black">{spotsRemaining}</span>
-                                            <span className="text-xs md:text-sm opacity-90">{text.spotsLeft}</span>
-                                            <span className="text-xs md:text-sm">👥</span>
-                                        </span>
-                                    </div>
-
-                                    {/* Date Badge */}
+                                {/* Date Badge */}
+                                <div className="absolute top-3 right-3 md:top-6 md:right-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                                     <div className="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-black/30 backdrop-blur-md text-white text-xs md:text-sm font-medium border border-white/20 shadow-lg">
                                         {text.date}
                                     </div>
@@ -296,33 +271,21 @@ Because a visit makes a difference ✨`,
                                 {/* Register Button - Enhanced with glow effect */}
                                 <div className="text-center">
                                     <div className="inline-block relative group/btn">
-                                        {spotsRemaining > 0 && (
-                                            <div className="absolute -inset-2 bg-gradient-to-r from-rose-500 to-pink-600 rounded-full blur-lg opacity-40 group-hover/btn:opacity-60 transition-opacity duration-300 animate-pulse" />
-                                        )}
+                                        <div className="absolute -inset-2 bg-gradient-to-r from-rose-500 to-pink-600 rounded-full blur-lg opacity-40 group-hover/btn:opacity-60 transition-opacity duration-300 animate-pulse" />
                                         <button
                                             onClick={() => {
-                                                if (spotsRemaining > 0) {
-                                                    setShowModal(true);
-                                                    setAlreadyRegistered(false);
-                                                }
+                                                setShowModal(true);
+                                                setAlreadyRegistered(false);
                                             }}
-                                            disabled={spotsRemaining <= 0}
-                                            className={`relative px-10 py-5 rounded-full text-xl font-bold transition-all duration-300 transform shadow-xl ${spotsRemaining > 0
-                                                ? 'bg-gradient-to-r from-rose-500 to-pink-600 text-white hover:from-rose-600 hover:to-pink-700 hover:shadow-2xl hover:scale-105 active:scale-100'
-                                                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                                                }`}
+                                            className="relative px-10 py-5 rounded-full text-xl font-bold transition-all duration-300 transform shadow-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white hover:from-rose-600 hover:to-pink-700 hover:shadow-2xl hover:scale-105 active:scale-100"
                                         >
-                                            {spotsRemaining > 0 ? (
-                                                <span className="flex items-center gap-3">
-                                                    <span className="text-2xl">🤝</span>
-                                                    {text.registerNow}
-                                                    <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                                    </svg>
-                                                </span>
-                                            ) : (
-                                                text.registrationClosed
-                                            )}
+                                            <span className="flex items-center gap-3">
+                                                <span className="text-2xl">🤝</span>
+                                                {text.registerNow}
+                                                <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
@@ -339,9 +302,6 @@ Because a visit makes a difference ✨`,
                         {/* Modal Header */}
                         <div className="bg-gradient-to-r from-rose-500 to-pink-600 p-6 text-white">
                             <h3 className="text-2xl font-bold text-center">{text.form.title}</h3>
-                            <p className="text-center text-white/80 mt-1">
-                                {spotsRemaining} {text.spotsLeft} 👥
-                            </p>
                         </div>
 
                         {/* Modal Body */}
