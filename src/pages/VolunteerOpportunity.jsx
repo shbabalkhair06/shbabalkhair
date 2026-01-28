@@ -97,7 +97,7 @@ Because a visit makes a difference ✨`,
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Formspree endpoint
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkobwdrp';
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xykjyybn';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
